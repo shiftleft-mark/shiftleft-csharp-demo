@@ -26,12 +26,12 @@ jobs:
       run: |
         Invoke-WebRequest -Uri 'https://cdn.shiftleft.io/download/sl-latest-windows-x64.zip' -OutFile sl.zip
         Expand-Archive -Path sl.zip -DestinationPath .
-    - name: Build console app
-      run: dotnet build netcoreConsole
-    - name: NextGen Static Analysis
-      run: .\sl analyze --app netcoreConsole --tag branch=$Env:GITHUB_REF --csharp --dotnet --cpg netcoreConsole/netcoreConsole/netcoreConsole.csproj
-      env:
-        SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
+    #- name: Build console app
+    #  run: dotnet build netcoreConsole
+    #- name: NextGen Static Analysis
+    #  run: .\sl analyze --app netcoreConsole --tag branch=$Env:GITHUB_REF --csharp --dotnet --cpg netcoreConsole/netcoreConsole/netcoreConsole.csproj
+    #  env:
+    #   SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
     - name: Build web API
       run: dotnet build netcoreWebapi
     - name: Analyze with NG SAST
